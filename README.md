@@ -10,6 +10,5 @@ Discord bot using the the Discord.py API to record user data for the application
 ## How To Use
 
 1. In CMD/Terminal, ```git clone https://github.com/SamJSui/Discord-Logger``` to clone the files to your current directory
-2. In CMD/Terminal, ```python main.py``` to start the program
-3. Use the Discord Bot Link to invite the Discord Bot to your server
-    - [Discord Bot Link](https://discord.com/api/oauth2/authorize?client_id=915823403036983317&permissions=67584&scope=bot)
+2. In the directory, create a ```.env``` file and type ```DISCORD_TOKEN=...``` with '...' replaced by your Discord Bot Token
+3. In CMD/Terminal, ```python main.py``` to start the program
