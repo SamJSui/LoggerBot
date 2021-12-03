@@ -2,7 +2,7 @@
 
 Discord bot using the the Discord.py API to record user data for the application's communities.
 
-## Current Version
+## Current Version (v1.0)
 
 - Discord Logger is able to parse information from Discord server voice channels and chats that it can view
 - The ID's and current usernames of members who sent a message into chat will be held in ```data.pkl```
