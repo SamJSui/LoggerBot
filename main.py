@@ -18,8 +18,8 @@ users = dict({})
 async def on_ready():
     global users
     print("DISCORD TRACKER IS RUNNING")
-    if os.stat("data.pkl").st_size != 0:
-        file = open("data.pkl", "rb")
+    if os.stat("users.pkl").st_size != 0:
+        file = open("users.pkl", "rb")
         users = pickle.load(file)
 
 
@@ -39,9 +39,9 @@ async def on_message(message):
     user_name = str(message.author)
     if user_id not in users:
         users.update({user_id: user_name})
-        data = open("data.pkl", "wb")
-        pickle.dump(users, data)
-        data.close()
+        user_data = open("users.pkl", "wb")
+        pickle.dump(users, user_data)
+        user_data.close()
 
 
 # Dataframe
