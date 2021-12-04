@@ -33,27 +33,31 @@ async def on_voice_state_update(member, before, after):
         else:
             row = df.index[((df['Date'] == date) & (df['ID'] == member.id)).any()]  # If entry - finds row index
             row_index = row[0][0]
-            df.at[row_index, 'Duration'] = null_time
-            user_times.update({member.id: dt.datetime.now()})
+            if df.at[row_index, 'Duration'] != null_time:
+                user_times.update({member.id: dt.datetime.now()})
     if before.channel and not after.channel:  # Leaves chat
-        row = df.index[((df['Date'] == date) & (df['ID'] == member.id)).any()]
-        row_index = row[0][0]
+        row = df.index[((df['Date'] == date) & (df['ID'] == member.id))].tolist()
+        row_index = row[0]
         df.at[row_index, 'Duration'] += (dt.datetime.now() - user_times.get(member.id))  # Adds accumulated time
         user_times.pop(member.id)
         df.to_csv(path_or_buf="data.csv")
+        print(df.tail())
 
 @client.event
 async def on_message(message):
     date = dt.datetime.today().strftime("%d-%m-%Y")
-    time = dt.datetime.now()
+    now_date = dt.datetime.now()
+    null_time = now_date.replace(hour=0, minute=0, second=0, microsecond=1)
     if not ((df['Date'] == date) & (df['ID'] == message.author.id)).any():
-        df.loc[len(df.index)] = [date, message.author.id, message.author.name, dt.datetime(1, 1, 1, 0, 0).time(), 1]
+        df.loc[len(df.index)] = [date, message.author.id, message.author.name, null_time, 1]
         df.to_csv(path_or_buf="data.csv")
+        print(df.tail())
     else:
-        row = df.index[((df['Date'] == date) & (df['ID'] == message.author.id)).any()]
-        row_index = row[0][0]
+        row = df.index[((df['Date'] == date) & (df['ID'] == message.author.id))].tolist()
+        row_index = row[0]
         df.at[row_index, 'Messages'] += 1
         df.to_csv(path_or_buf="data.csv")
+        print(df.tail())
 
 if __name__ == "__main__":
     client.run(TOKEN)
