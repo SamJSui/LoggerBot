@@ -1,20 +1,20 @@
-# Discord Logger
+# LoggerBot
 
 Discord bot using the Discord.py API to record user data for the application's communities.
 
 ## Current Version (v2.2)
 
-- Discord Logger records and stores:
+- LoggerBot records and stores:
   - Dates of Activity
   - Discord IDs and current Discord usernames
   - Durations of time in a voice channel
   - Integers of messages sent per day
   - ```times.pkl``` file enables ability to restart bot while people in voice call (data stored)
-- Discord Logger Commands
+- LoggerBot Commands
   - ```!voice Day|Total``` prints the user's time within voice chats with H:M:S format 
   - ```!graph Day|Total``` sends a bar graph png, comparing user data to server's
 
-*Discord Logger can only record data from channels that it can see*
+*LoggerBot can only record data from channels that it can see*
 
 ## How To Use
 
