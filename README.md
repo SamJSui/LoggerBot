@@ -2,7 +2,7 @@
 
 Discord bot using the Discord.py API to record user data for the application's communities.
 
-## Current Version (v2.1.4)
+## Current Version (v2.2)
 
 - Discord Logger records and stores:
   - Dates of Activity
@@ -11,7 +11,8 @@ Discord bot using the Discord.py API to record user data for the application's c
   - Integers of messages sent per day
   - ```times.pkl``` file enables ability to restart bot while people in voice call (data stored)
 - Discord Logger Commands
-  - ```!voice``` prints the user's time within voice chats with H:M:S format
+  - ```!voice Day|Total``` prints the user's time within voice chats with H:M:S format 
+  - ```!graph Day|Total``` sends a bar graph png, comparing user data to server's
 
 *Discord Logger can only record data from channels that it can see*
 
@@ -27,10 +28,13 @@ Discord bot using the Discord.py API to record user data for the application's c
 - This Data Science project was created to collect activity within the Discord server, allowing us to reflect on our past, in the future, in the form of data.
 
 ### Edits
-- (v2.1.4) ```times.pkl``` stores current time data in seconds
+- (v2.2) ```!graph and !voice (Day|Total)```
+- Modularized the column summation for different test cases into one function
+- Fixed edge case where ```!voice``` did not portray accurate time in chat until the person left
+- (v2.1.4) ```times.pkl``` stores current time data in seconds (in case bot needs to be restarted)
 - Sets up for bot commands (previous sorting error) - v2.1.4 added ```!voice``` command
 - Prints to console every new entry
-- Records duration of user presence within voice channel (v2.1.4 now stores durations in seconds)
+- Records duration of user presence within voice channel
 - ~~(v2.1.3) Cleans up repeated code~~
 - ~~(v2.1.2) Edge case for post-midnight events~~
 - ~~Records new members in the .csv~~
